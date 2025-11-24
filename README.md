@@ -8,7 +8,8 @@ A lightweight, secure password generator library for TypeScript and JavaScript.
 - Customizable length and character sets
 - TypeScript support
 - Works in Node.js and Browser
-- UMD and ESM builds
+- UMD and ESM builds  
+- Human-readable password generation
 
 ## Installation
 
@@ -62,3 +63,4 @@ Returns a random string.
 | `includeLowercase` | `boolean` | `true` | Include a-z |
 | `includeNumbers` | `boolean` | `true` | Include 0-9 |
 | `includeSymbols` | `boolean` | `true` | Include !@#$%^&*... |
+| `humanReadable` | `boolean` | `false` | Generate a pronounceable password |
