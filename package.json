@@ -7,9 +7,18 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/pass-generator.mjs",
-      "require": "./dist/pass-generator.umd.js"
+      "node": {
+        "import": "./dist/pass-generator.node.mjs",
+        "require": "./dist/pass-generator.node.js"
+      },
+      "default": {
+        "import": "./dist/pass-generator.mjs",
+        "require": "./dist/pass-generator.umd.js"
+      }
     }
+  },
+  "engines": {
+    "node": ">=16.0.0"
   },
   "scripts": {
     "dev": "vite",

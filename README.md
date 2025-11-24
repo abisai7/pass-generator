@@ -1,4 +1,4 @@
-# Secure Password Generator
+# 🔐 Secure Password Generator
 
 A lightweight, secure password generator library for TypeScript and JavaScript.
 
@@ -10,6 +10,11 @@ A lightweight, secure password generator library for TypeScript and JavaScript.
 - Works in Node.js and Browser
 - UMD and ESM builds  
 - Human-readable password generation
+
+## Requirements
+
+- Node.js >= 16
+- npm >= 8
 
 ## Installation
 
