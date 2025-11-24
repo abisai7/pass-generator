@@ -21,7 +21,7 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vitest",
     "build": "tsc && vite build",
     "test": "vitest"
   },
