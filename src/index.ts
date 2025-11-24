@@ -15,6 +15,44 @@ const SYMBOLS = '!@#$%^&*()_+~`|}{[]:;?><,./-=';
 const CONSONANTS = 'bcdfghjklmnpqrstvwxyz';
 const VOWELS = 'aeiou';
 
+/** 
+ * Returns a random string from a charset 
+ * */
+function randomChars(charset: string, count: number): string {
+    if (count <= 0) return '';
+    const values = new Uint32Array(count);
+    crypto.getRandomValues(values);
+    return Array.from(values, v => charset[v % charset.length]).join('');
+}
+
+/** 
+ * Generates a pronounceable sequence by alternating consonants and vowels 
+ * */
+function generatePronounceable(length: number, includeUppercase: boolean): string {
+    if (length <= 0) return '';
+
+    const values = new Uint32Array(length);
+    crypto.getRandomValues(values);
+
+    let useConsonant = values[0] % 2 === 0;
+    const result: string[] = [];
+
+    for (let i = 0; i < length; i++) {
+        const set = useConsonant ? CONSONANTS : VOWELS;
+        let char = set[values[i] % set.length];
+
+        // Occasionally uppercase consonant/vowel
+        if (includeUppercase && values[i] % 3 === 0) {
+            char = char.toUpperCase();
+        }
+
+        result.push(char);
+        useConsonant = !useConsonant;
+    }
+
+    return result.join('');
+}
+
 export function generatePassword(options: PasswordOptions = {}): string {
     const {
         length = 12,
@@ -25,86 +63,45 @@ export function generatePassword(options: PasswordOptions = {}): string {
         humanReadable = false,
     } = options;
 
+    // Human-readable password generation
     if (humanReadable) {
         let numCount = includeNumbers ? (length >= 8 ? 2 : 1) : 0;
         let symbolCount = includeSymbols ? (length >= 8 ? 2 : 1) : 0;
 
-        // Ensure we don't exceed length
-        if (numCount + symbolCount > length) {
+        // Ensure extra chars do not exceed total length
+        const extra = numCount + symbolCount;
+        if (extra > length) {
             if (includeNumbers && includeSymbols) {
                 numCount = Math.floor(length / 2);
                 symbolCount = length - numCount;
             } else if (includeNumbers) {
                 numCount = length;
+                symbolCount = 0;
             } else {
                 symbolCount = length;
+                numCount = 0;
             }
         }
 
         const wordLength = length - numCount - symbolCount;
-        let password = '';
 
-        // Generate pronounceable part
-        if (wordLength > 0) {
-            const values = new Uint32Array(wordLength);
-            crypto.getRandomValues(values);
-
-            // Start with consonant or vowel randomly? Let's alternate.
-            // To make it sound like a word, starting with Consonant is usually safer, but random is fine.
-            // Let's stick to strict C-V-C-V...
-            let useConsonant = values[0] % 2 === 0;
-
-            for (let i = 0; i < wordLength; i++) {
-                const set = useConsonant ? CONSONANTS : VOWELS;
-                let char = set[values[i] % set.length];
-
-                if (includeUppercase && values[i] % 3 === 0) { // Randomly uppercase ~33%
-                    char = char.toUpperCase();
-                }
-
-                password += char;
-                useConsonant = !useConsonant;
-            }
-        }
-
-        // Append numbers
-        if (numCount > 0) {
-            const numValues = new Uint32Array(numCount);
-            crypto.getRandomValues(numValues);
-            for (let i = 0; i < numCount; i++) {
-                password += NUMBERS[numValues[i] % NUMBERS.length];
-            }
-        }
-
-        // Append symbols
-        if (symbolCount > 0) {
-            const symValues = new Uint32Array(symbolCount);
-            crypto.getRandomValues(symValues);
-            for (let i = 0; i < symbolCount; i++) {
-                password += SYMBOLS[symValues[i] % SYMBOLS.length];
-            }
-        }
-
-        return password;
+        return (
+            generatePronounceable(wordLength, includeUppercase) +
+            randomChars(NUMBERS, numCount) +
+            randomChars(SYMBOLS, symbolCount)
+        );
     }
 
+    // Standard random password generation
     let charset = '';
     if (includeUppercase) charset += UPPERCASE;
     if (includeLowercase) charset += LOWERCASE;
     if (includeNumbers) charset += NUMBERS;
     if (includeSymbols) charset += SYMBOLS;
 
-    if (charset === '') {
+    if (!charset) {
         throw new Error('At least one character set must be selected.');
     }
 
-    let password = '';
-    const values = new Uint32Array(length);
-    crypto.getRandomValues(values);
-
-    for (let i = 0; i < length; i++) {
-        password += charset[values[i] % charset.length];
-    }
-
-    return password;
+    return randomChars(charset, length);
 }
