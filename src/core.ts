@@ -19,20 +19,24 @@ export interface CryptoInterface {
     getRandomValues(array: Uint32Array): Uint32Array;
 }
 
-/** 
- * Returns a random string from a charset 
+/**
+ * Returns a random string from a charset
  * */
 function randomChars(crypto: CryptoInterface, charset: string, count: number): string {
     if (count <= 0) return '';
     const values = new Uint32Array(count);
     crypto.getRandomValues(values);
-    return Array.from(values, v => charset[v % charset.length]).join('');
+    return Array.from(values, (v) => charset[v % charset.length]).join('');
 }
 
-/** 
- * Generates a pronounceable sequence by alternating consonants and vowels 
+/**
+ * Generates a pronounceable sequence by alternating consonants and vowels
  * */
-function generatePronounceable(crypto: CryptoInterface, length: number, includeUppercase: boolean): string {
+function generatePronounceable(
+    crypto: CryptoInterface,
+    length: number,
+    includeUppercase: boolean,
+): string {
     if (length <= 0) return '';
 
     const values = new Uint32Array(length);
@@ -57,7 +61,10 @@ function generatePronounceable(crypto: CryptoInterface, length: number, includeU
     return result.join('');
 }
 
-export function generatePasswordCore(crypto: CryptoInterface, options: PasswordOptions = {}): string {
+export function generatePasswordCore(
+    crypto: CryptoInterface,
+    options: PasswordOptions = {},
+): string {
     const {
         length = 12,
         includeUppercase = true,

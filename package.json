@@ -1,42 +1,44 @@
 {
-  "name": "pass-generator",
-  "version": "1.0.0",
-  "description": "A secure password generator library",
-  "main": "./dist/pass-generator.umd.js",
-  "module": "./dist/pass-generator.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "node": {
-        "import": "./dist/pass-generator.node.mjs",
-        "require": "./dist/pass-generator.node.js"
-      },
-      "default": {
-        "import": "./dist/pass-generator.mjs",
-        "require": "./dist/pass-generator.umd.js"
-      }
+    "name": "pass-generator",
+    "version": "1.0.0",
+    "description": "A secure password generator library",
+    "main": "./dist/pass-generator.umd.js",
+    "module": "./dist/pass-generator.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "node": {
+                "import": "./dist/pass-generator.node.mjs",
+                "require": "./dist/pass-generator.node.js"
+            },
+            "default": {
+                "import": "./dist/pass-generator.mjs",
+                "require": "./dist/pass-generator.umd.js"
+            }
+        }
+    },
+    "engines": {
+        "node": ">=16.0.0"
+    },
+    "scripts": {
+        "dev": "vitest",
+        "build": "tsc && vite build",
+        "test": "vitest",
+        "format": "prettier --write ."
+    },
+    "keywords": [
+        "password",
+        "generator",
+        "secure",
+        "typescript"
+    ],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^24.10.1",
+        "prettier": "^3.6.2",
+        "typescript": "^5.9.3",
+        "vite": "^7.2.4",
+        "vitest": "^4.0.13"
     }
-  },
-  "engines": {
-    "node": ">=16.0.0"
-  },
-  "scripts": {
-    "dev": "vitest",
-    "build": "tsc && vite build",
-    "test": "vitest"
-  },
-  "keywords": [
-    "password",
-    "generator",
-    "secure",
-    "typescript"
-  ],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^24.10.1",
-    "typescript": "^5.9.3",
-    "vite": "^7.2.4",
-    "vitest": "^4.0.13"
-  }
 }

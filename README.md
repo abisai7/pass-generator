@@ -8,7 +8,7 @@ A lightweight, secure password generator library for TypeScript and JavaScript.
 - Customizable length and character sets
 - TypeScript support
 - Universal compatibility: Automatically uses 'node:crypto' in Node.js and 'Web Crypto API' in browsers
-- UMD and ESM builds  
+- UMD and ESM builds
 - Human-readable password generation
 
 ## Requirements
@@ -38,8 +38,8 @@ npm install pass-generator
 import { generatePassword } from 'pass-generator';
 
 const password = generatePassword({
-  length: 16,
-  includeSymbols: true
+    length: 16,
+    includeSymbols: true,
 });
 console.log(password);
 ```
@@ -48,8 +48,8 @@ console.log(password);
 
 ```html
 <script>
-  const password = PassGenerator.generatePassword({ length: 12 });
-  console.log(password);
+    const password = PassGenerator.generatePassword({ length: 12 });
+    console.log(password);
 </script>
 ```
 
@@ -61,11 +61,11 @@ Returns a random string.
 
 #### Options
 
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `length` | `number` | `12` | Length of the password |
-| `includeUppercase` | `boolean` | `true` | Include A-Z |
-| `includeLowercase` | `boolean` | `true` | Include a-z |
-| `includeNumbers` | `boolean` | `true` | Include 0-9 |
-| `includeSymbols` | `boolean` | `true` | Include !@#$%^&*... |
-| `humanReadable` | `boolean` | `false` | Generate a pronounceable password |
+| Option             | Type      | Default | Description                       |
+| ------------------ | --------- | ------- | --------------------------------- |
+| `length`           | `number`  | `12`    | Length of the password            |
+| `includeUppercase` | `boolean` | `true`  | Include A-Z                       |
+| `includeLowercase` | `boolean` | `true`  | Include a-z                       |
+| `includeNumbers`   | `boolean` | `true`  | Include 0-9                       |
+| `includeSymbols`   | `boolean` | `true`  | Include !@#$%^&\*...              |
+| `humanReadable`    | `boolean` | `false` | Generate a pronounceable password |

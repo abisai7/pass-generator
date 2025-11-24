@@ -13,12 +13,14 @@ describe('generatePassword', () => {
     });
 
     it('should throw error if no character sets are selected', () => {
-        expect(() => generatePassword({
-            includeUppercase: false,
-            includeLowercase: false,
-            includeNumbers: false,
-            includeSymbols: false,
-        })).toThrow();
+        expect(() =>
+            generatePassword({
+                includeUppercase: false,
+                includeLowercase: false,
+                includeNumbers: false,
+                includeSymbols: false,
+            }),
+        ).toThrow();
     });
 
     it('should include only numbers if specified', () => {
@@ -52,7 +54,7 @@ describe('generatePassword', () => {
                 humanReadable: true,
                 length: 10,
                 includeNumbers: false,
-                includeSymbols: false
+                includeSymbols: false,
             });
 
             const vowels = 'aeiouAEIOU';
@@ -69,7 +71,7 @@ describe('generatePassword', () => {
                 length: 20,
                 includeUppercase: false,
                 includeNumbers: false,
-                includeSymbols: false
+                includeSymbols: false,
             });
             expect(password).toMatch(/^[a-z]+$/);
         });
