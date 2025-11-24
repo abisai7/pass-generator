@@ -1,0 +1,32 @@
+{
+  "name": "pass-generator",
+  "version": "1.0.0",
+  "description": "A secure password generator library",
+  "main": "./dist/pass-generator.umd.js",
+  "module": "./dist/pass-generator.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/pass-generator.mjs",
+      "require": "./dist/pass-generator.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "vitest"
+  },
+  "keywords": [
+    "password",
+    "generator",
+    "secure",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vite": "^7.2.4",
+    "vitest": "^4.0.13"
+  }
+}
