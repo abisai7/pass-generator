@@ -7,7 +7,7 @@ A lightweight, secure password generator library for TypeScript and JavaScript.
 - Cryptographically secure random number generation
 - Customizable length and character sets
 - TypeScript support
-- Works in Node.js and Browser
+- Universal compatibility: Automatically uses 'node:crypto' in Node.js and 'Web Crypto API' in browsers
 - UMD and ESM builds  
 - Human-readable password generation
 
