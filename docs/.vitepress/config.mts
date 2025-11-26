@@ -23,6 +23,12 @@ export default defineConfig({
         ],
 
         socialLinks: [{ icon: 'github', link: 'https://github.com/abisai7/pass-generator' }],
+
+        footer: {
+            message:
+                'Released under the <a href="https://github.com/abisai7/pass-generator/blob/main/LICENSE">ISC License</a>.',
+            copyright: 'Copyright © 2025-present <a href="https://abisai.dev">Abisai Herrera</a>',
+        },
     },
     vite: {
         configFile: false,
