@@ -35,7 +35,9 @@
         "build": "vite build && vite build -c vite.config.umd.ts && tsc",
         "local-release": "changeset version && changeset publish",
         "prepublishOnly": "npm run ci",
-        "test": "vitest run",
+        "test": "vitest",
+        "docs:dev": "vitepress dev docs",
+        "docs:build": "vitepress build docs",
         "format": "prettier --write .",
         "check-format": "prettier --check ."
     },
@@ -70,6 +72,8 @@
         "prettier": "^3.6.2",
         "typescript": "^5.9.3",
         "vite": "^7.2.4",
-        "vitest": "^4.0.13"
+        "vitepress": "^1.6.4",
+        "vitest": "^4.0.13",
+        "vue": "^3.5.25"
     }
 }
