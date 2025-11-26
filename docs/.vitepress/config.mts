@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress';
 import { resolve } from 'path';
 
 export default defineConfig({
+    base: '/pass-generator/',
     title: 'Pass Generator',
     description: 'A secure and flexible password generator library.',
     themeConfig: {
