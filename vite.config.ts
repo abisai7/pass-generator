@@ -9,11 +9,12 @@ export default defineConfig({
                 node: resolve(__dirname, 'src/index.node.ts'),
             },
             name: 'PassGenerator',
+            formats: ['es', 'cjs'],
             fileName: (format, entryName) => {
                 if (entryName === 'node') {
                     return `pass-generator.node.${format === 'es' ? 'mjs' : 'js'}`;
                 }
-                return `pass-generator.${format === 'es' ? 'mjs' : 'umd.js'}`;
+                return `pass-generator.${format === 'es' ? 'mjs' : 'js'}`;
             },
         },
         rollupOptions: {
