@@ -21,3 +21,11 @@ features:
     - title: TypeScript
       details: Written in TypeScript with full type definitions.
 ---
+
+<script setup>
+import PasswordGenerator from './components/PasswordGenerator.vue'
+</script>
+
+## Live Demo
+
+<PasswordGenerator />
