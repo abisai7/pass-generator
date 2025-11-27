@@ -10,6 +10,7 @@ export default defineConfig({
             { text: 'Home', link: '/' },
             { text: 'Guide', link: '/guide' },
             { text: 'API', link: '/api' },
+            { text: 'Demo', link: '#live-demo' },
         ],
 
         socialLinks: [

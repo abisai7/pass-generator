@@ -17,12 +17,16 @@ console.log(password);
 
 // Generate a custom password
 const customPassword = generatePassword({
-    length: 16,
-    numbers: true,
-    symbols: false,
-    uppercase: true,
-    lowercase: true,
-    excludeSimilarCharacters: true,
+    length: 8,
+    includeUppercase: false,
+    includeLowercase: false,
+    includeSymbols: false,
 });
 console.log(customPassword);
+// → "92710485"
+
+// Human-readable password
+const humanReadablePassword = generatePassword({ length: 10, humanReadable: true });
+console.log(humanReadablePassword);
+// → "mavuroked" (example)
 ```

@@ -24,7 +24,7 @@ const generate = () => {
         });
         copied.value = false;
     } catch (e) {
-        password.value = 'Error: ' + (e as Error).message;
+        password.value = 'Error: At least one option must be selected';
     }
 };
 
@@ -76,22 +76,27 @@ watch(
             <div class="options-grid">
                 <label class="checkbox-label">
                     <input type="checkbox" v-model="includeUppercase" />
+                    <span class="checkmark"></span>
                     Uppercase (A-Z)
                 </label>
                 <label class="checkbox-label">
                     <input type="checkbox" v-model="includeLowercase" />
+                    <span class="checkmark"></span>
                     Lowercase (a-z)
                 </label>
                 <label class="checkbox-label">
                     <input type="checkbox" v-model="includeNumbers" />
+                    <span class="checkmark"></span>
                     Numbers (0-9)
                 </label>
                 <label class="checkbox-label">
                     <input type="checkbox" v-model="includeSymbols" />
+                    <span class="checkmark"></span>
                     Symbols (!@#$)
                 </label>
                 <label class="checkbox-label">
                     <input type="checkbox" v-model="humanReadable" />
+                    <span class="checkmark"></span>
                     Human Readable
                 </label>
             </div>
@@ -152,36 +157,105 @@ watch(
 .control-group input[type='range'] {
     width: 100%;
     margin-top: 5px;
+    accent-color: var(--vp-c-brand-2);
 }
 
 .options-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 10px;
+    gap: 15px;
 }
 
 .checkbox-label {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     cursor: pointer;
     user-select: none;
+    position: relative;
+    padding-left: 35px; /* Space for custom checkbox */
+    font-size: 1.05em;
+}
+
+/* Hide default checkbox */
+.checkbox-label input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 24px;
+    width: 24px;
+    background-color: var(--vp-c-bg);
+    border: 2px solid var(--vp-c-divider);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-label:hover input ~ .checkmark {
+    border-color: var(--vp-c-brand-2);
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-label input:checked ~ .checkmark {
+    background-color: var(--vp-c-brand-2);
+    border-color: var(--vp-c-brand-2);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-label input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-label .checkmark:after {
+    left: 8px;
+    top: 4px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
 }
 
 .generate-btn {
-    background-color: var(--vp-c-brand);
+    background-color: var(--vp-button-brand-bg);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
+    padding: 12px 24px;
+    border-radius: 24px;
     cursor: pointer;
     font-weight: 600;
-    transition: background-color 0.2s;
+    font-size: 1.1em;
+    transition: all 0.2s;
     align-self: center;
-    margin-top: 10px;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .generate-btn:hover {
-    background-color: var(--vp-c-brand-dark);
+    filter: brightness(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.generate-btn:active {
+    transform: translateY(0);
 }
 </style>
