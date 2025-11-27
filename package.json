@@ -1,6 +1,7 @@
 {
     "name": "@abisai7/pass-generator",
     "version": "1.2.0",
+    "homepage": "https://abisai7.github.io/pass-generator/",
     "publishConfig": {
         "access": "public"
     },
@@ -8,6 +9,10 @@
         "dist"
     ],
     "description": "A secure password generator library",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/abisai7/pass-generator.git"
+    },
     "main": "./dist/pass-generator.js",
     "unpkg": "./dist/pass-generator.umd.js",
     "module": "./dist/pass-generator.mjs",
