@@ -1,5 +1,11 @@
 # @abisai7/pass-generator
 
+## 1.2.1
+
+### Patch Changes
+
+- eeb965d: Add homepage and repository info
+
 ## 1.2.0
 
 ### Minor Changes

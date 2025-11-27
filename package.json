@@ -1,6 +1,6 @@
 {
     "name": "@abisai7/pass-generator",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "homepage": "https://abisai7.github.io/pass-generator/",
     "publishConfig": {
         "access": "public"
