@@ -11,6 +11,7 @@ export default defineConfig({
             { text: 'Guide', link: '/guide' },
             { text: 'API', link: '/api' },
             { text: 'Demo', link: '#live-demo' },
+            { text: 'NPM', link: 'https://www.npmjs.com/package/@abisai7/pass-generator' },
         ],
 
         socialLinks: [
