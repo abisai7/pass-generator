@@ -1,5 +1,11 @@
 # @abisai7/pass-generator
 
+## 1.3.0
+
+### Minor Changes
+
+- 46ed5f0: chore: update build configuration and dependencies
+
 ## 1.2.1
 
 ### Patch Changes
