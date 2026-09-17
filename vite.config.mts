@@ -5,8 +5,8 @@ export default defineConfig({
     build: {
         lib: {
             entry: {
-                index: resolve(__dirname, 'src/index.ts'),
-                node: resolve(__dirname, 'src/index.node.ts'),
+                index: resolve(import.meta.dirname, 'src/index.ts'),
+                node: resolve(import.meta.dirname, 'src/index.node.ts'),
             },
             name: 'PassGenerator',
             formats: ['es', 'cjs'],

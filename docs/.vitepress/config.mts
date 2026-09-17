@@ -40,7 +40,7 @@ export default defineConfig({
 
         footer: {
             message:
-                'Released under the <a href="https://github.com/abisai7/pass-generator/blob/main/LICENSE">ISC License</a>.',
+                'Released under the <a href="https://github.com/abisai7/pass-generator/blob/main/LICENSE">MIT License</a>.',
             copyright: 'Copyright © 2025-present <a href="https://abisai.dev">Abisai Herrera</a>',
         },
     },

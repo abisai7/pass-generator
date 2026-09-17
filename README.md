@@ -121,4 +121,4 @@ generatePassword({
 
 ## 📜 License
 
-ISC
+MIT
