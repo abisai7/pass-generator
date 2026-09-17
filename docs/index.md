@@ -24,7 +24,10 @@ features:
 
 <script setup>
 import PasswordGenerator from './components/PasswordGenerator.vue'
+import NpmStats from './components/NpmStats.vue'
 </script>
+
+<NpmStats />
 
 ## Live Demo
 
