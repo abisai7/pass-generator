@@ -68,7 +68,14 @@ GitHub Actions runs CI for every pull request. After a maintainer merges a pull 
 
 1. It creates or updates a release pull request.
 2. That pull request updates `package.json`, `package-lock.json`, and `CHANGELOG.md`.
-3. A maintainer merges that release pull request, which stages the package on npm.
-4. A maintainer reviews the staged package and approves it with 2FA in npm before it becomes public.
+3. A maintainer merges that release pull request.
+4. GitHub pauses the npm publish job until a required reviewer approves the `npm-publish` environment.
+5. After approval, GitHub publishes the package to npm using Trusted Publishing.
 
-External contributors do not need npm credentials or permission to publish. Do not run `npm publish`, `npm stage`, or `npm run local-release` as part of a contribution.
+External contributors do not need npm credentials or permission to publish. Do not run `npm publish` or `npm run local-release` as part of a contribution.
+
+## Maintainer Release Setup
+
+To require approval before publishing, create the `npm-publish` environment in **Settings > Environments** and add the release maintainers as required reviewers. The release workflow uses that environment to pause the publish job after the release pull request is merged.
+
+Configure npm Trusted Publishing for the `abisai7/pass-generator` repository and the `release.yml` workflow. Allow `npm publish` for that trusted publisher; GitHub Environment approval is the manual control that prevents unattended publication.
