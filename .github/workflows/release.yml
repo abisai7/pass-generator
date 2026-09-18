@@ -36,7 +36,7 @@ jobs:
             - name: Update npm for trusted publishing
               run: npm install --global npm@11.5.1
 
-            - name: Create release pull request or publish to npm
+            - name: Create release pull request or stage package on npm
               uses: changesets/action@v1
               with:
                   version: npm run version-packages

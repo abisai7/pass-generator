@@ -68,6 +68,7 @@ GitHub Actions runs CI for every pull request. After a maintainer merges a pull 
 
 1. It creates or updates a release pull request.
 2. That pull request updates `package.json`, `package-lock.json`, and `CHANGELOG.md`.
-3. A maintainer merges that release pull request, which triggers publication to npm.
+3. A maintainer merges that release pull request, which stages the package on npm.
+4. A maintainer reviews the staged package and approves it with 2FA in npm before it becomes public.
 
-External contributors do not need npm credentials or permission to publish. Do not run `npm publish` or `npm run local-release` as part of a contribution.
+External contributors do not need npm credentials or permission to publish. Do not run `npm publish`, `npm stage`, or `npm run local-release` as part of a contribution.
