@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
+import { Check, Copy } from '@lucide/vue';
 import { generatePassword } from '../../src/index';
 
 const length = ref(12);
@@ -59,9 +60,10 @@ watch(
                 class="copy-btn"
                 @click="copyToClipboard"
                 :title="copied ? 'Copied!' : 'Copy to clipboard'"
+                :aria-label="copied ? 'Copied' : 'Copy password to clipboard'"
             >
-                <span v-if="copied">✓</span>
-                <span v-else>📋</span>
+                <Check v-if="copied" :size="19" aria-hidden="true" />
+                <Copy v-else :size="19" aria-hidden="true" />
             </button>
         </div>
 
@@ -135,10 +137,11 @@ watch(
 }
 
 .copy-btn {
+    display: inline-grid;
+    place-items: center;
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.2em;
     padding: 5px;
     border-radius: 4px;
     transition: background-color 0.2s;
@@ -235,24 +238,27 @@ watch(
 }
 
 .generate-btn {
-    background-color: var(--vp-button-brand-bg);
+    background: var(--vp-button-brand-bg);
     color: white;
-    border: none;
+    border: 1px solid rgb(103 232 249 / 55%);
     padding: 12px 24px;
-    border-radius: 24px;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
     font-size: 1.1em;
-    transition: all 0.2s;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
     align-self: center;
     margin-top: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgb(8 145 178 / 32%);
 }
 
 .generate-btn:hover {
     filter: brightness(1.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transform: translateY(-1px);
+    box-shadow: 0 12px 26px rgb(8 145 178 / 42%);
+    transform: translateY(-2px);
 }
 
 .generate-btn:active {

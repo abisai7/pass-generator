@@ -12,23 +12,19 @@ hero:
         - theme: alt
           text: API Reference
           link: /api
-
-features:
-    - title: Secure
-      details: Uses cryptographically strong random values.
-    - title: Flexible
-      details: Customizable length and character sets.
-    - title: TypeScript
-      details: Written in TypeScript with full type definitions.
 ---
 
 <script setup>
 import PasswordGenerator from './components/PasswordGenerator.vue'
 import NpmStats from './components/NpmStats.vue'
+import FeatureCards from './components/FeatureCards.vue'
+import SectionTitle from './components/SectionTitle.vue'
 </script>
 
 <NpmStats />
 
-## Live Demo
+<FeatureCards />
+
+<SectionTitle id="live-demo" title="Live Demo" />
 
 <PasswordGenerator />

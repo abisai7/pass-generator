@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress';
 import { resolve } from 'path';
 
 export default defineConfig({
-    base: '/pass-generator/',
+    base: process.env.NODE_ENV === 'production' ? '/pass-generator/' : '/',
     title: 'Pass Generator',
     description: 'A secure and flexible password generator library.',
     themeConfig: {
@@ -10,7 +10,7 @@ export default defineConfig({
             { text: 'Home', link: '/' },
             { text: 'Guide', link: '/guide' },
             { text: 'API', link: '/api' },
-            { text: 'Demo', link: '#live-demo' },
+            { text: 'Demo', link: '/#live-demo' },
             { text: 'NPM', link: 'https://www.npmjs.com/package/@abisai7/pass-generator' },
         ],
 
