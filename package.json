@@ -39,6 +39,8 @@
         "ci": "npm run build && npm run check-format && npm run test",
         "build": "vite build && vite build -c vite.config.umd.mts && tsc",
         "local-release": "changeset version && changeset publish",
+        "version-packages": "changeset version",
+        "release": "changeset publish",
         "prepublishOnly": "npm run ci",
         "test": "vitest",
         "docs:dev": "vitepress dev docs",

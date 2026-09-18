@@ -119,6 +119,10 @@ generatePassword({
 - Can generate both **strong security passwords** and **human-friendly strings**
 - Actively maintained and TypeScript-first
 
+## 🤝 Contributing
+
+See the [contribution guide](CONTRIBUTING.md) for the fork, pull request, testing, and release process.
+
 ## 📜 License
 
 MIT
