@@ -1,5 +1,11 @@
 # @abisai7/pass-generator
 
+## 1.3.1
+
+### Patch Changes
+
+- f7e9c09: fix: update generatePronounceable to support lowercase option and add test for uppercase generation
+
 ## 1.3.0
 
 ### Minor Changes
