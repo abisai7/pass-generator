@@ -36,6 +36,7 @@ function generatePronounceable(
     crypto: CryptoInterface,
     length: number,
     includeUppercase: boolean,
+    includeLowercase: boolean,
 ): string {
     if (length <= 0) return '';
 
@@ -49,8 +50,8 @@ function generatePronounceable(
         const set = useConsonant ? CONSONANTS : VOWELS;
         let char = set[values[i] % set.length];
 
-        // Occasionally uppercase consonant/vowel
-        if (includeUppercase && values[i] % 3 === 0) {
+        // Force full uppercase when lowercase is disabled, otherwise uppercase occasionally
+        if (includeUppercase && (!includeLowercase || values[i] % 3 === 0)) {
             char = char.toUpperCase();
         }
 
@@ -97,7 +98,7 @@ export function generatePasswordCore(
         const wordLength = length - numCount - symbolCount;
 
         return (
-            generatePronounceable(crypto, wordLength, includeUppercase) +
+            generatePronounceable(crypto, wordLength, includeUppercase, includeLowercase) +
             randomChars(crypto, NUMBERS, numCount) +
             randomChars(crypto, SYMBOLS, symbolCount)
         );

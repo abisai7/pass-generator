@@ -75,5 +75,17 @@ describe('generatePassword', () => {
             });
             expect(password).toMatch(/^[a-z]+$/);
         });
+
+        it('should generate a fully uppercase pronounceable word when only includeUppercase is enabled', () => {
+            const password = generatePassword({
+                humanReadable: true,
+                length: 20,
+                includeUppercase: true,
+                includeLowercase: false,
+                includeNumbers: false,
+                includeSymbols: false,
+            });
+            expect(password).toMatch(/^[A-Z]+$/);
+        });
     });
 });
