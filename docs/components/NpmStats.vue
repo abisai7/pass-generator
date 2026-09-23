@@ -30,16 +30,6 @@
                 src="https://img.shields.io/npm/l/@abisai7/pass-generator?color=%2300B894&label=license"
             />
         </a>
-        <a
-            href="https://bundlephobia.com/package/@abisai7/pass-generator"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <img
-                alt="bundle size"
-                src="https://img.shields.io/bundlephobia/minzip/@abisai7/pass-generator?color=%23834DF5&label=min+gzip&logo=webpack"
-            />
-        </a>
     </div>
 </template>
 
